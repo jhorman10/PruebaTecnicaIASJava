@@ -2,9 +2,10 @@ package com.jhormanorozco.app.dto;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
+import org.hibernate.annotations.Immutable;
 
-@Entity
+
+@Immutable
 public class PostRequestDTO {
 
 	private Long id_tecnico;

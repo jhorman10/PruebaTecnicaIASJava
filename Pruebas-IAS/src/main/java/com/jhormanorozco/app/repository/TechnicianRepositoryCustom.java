@@ -8,7 +8,6 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.jhormanorozco.app.dto.PostRequestDTO;
 import com.jhormanorozco.app.dto.ResponseDTO;
 import com.jhormanorozco.app.entity.Attention_Hour;
 

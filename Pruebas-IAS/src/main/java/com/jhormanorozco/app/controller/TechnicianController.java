@@ -38,10 +38,12 @@ public class TechnicianController {
 
 	@PostMapping("/asha")
 	public ResponseEntity<Attention_Hour> saveServicioAtentidoXTecnico(@RequestBody PostRequestDTO post) {
+		System.out.println("contenido de post: " + post);
 		List result = technicianService.hacerCalculos(post);
 		Attention_Hour save = new Attention_Hour();
-		save.setHORA_INICIO((Long) result.get(2));
-		save.setHORA_FIN((Long) result.get(3));		
+		save.setHORA_INICIO((Long) result.get(3));
+		save.setHORA_FIN((Long) result.get(5));
+		
 		return ResponseEntity.status(HttpStatus.OK).body(technicianService.save(save));
 	}
 

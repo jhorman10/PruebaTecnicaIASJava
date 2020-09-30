@@ -2,7 +2,6 @@ package com.jhormanorozco.app.repository;
 
 import java.util.List;
 
-import com.jhormanorozco.app.dto.PostRequestDTO;
 import com.jhormanorozco.app.dto.ResponseDTO;
 import com.jhormanorozco.app.entity.Attention_Hour;
 

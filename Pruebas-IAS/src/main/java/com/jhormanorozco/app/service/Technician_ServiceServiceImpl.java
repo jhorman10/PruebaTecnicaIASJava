@@ -30,7 +30,7 @@ public class Technician_ServiceServiceImpl implements Technician_ServiceService 
 	@Override
 	public List<Object> hacerCalculos(PostRequestDTO post) {
 		// auqui se calcula
-		List list = new ArrayList<>();
+		List<Object> list = new ArrayList<>();
 		list.add(post.getId_tecnico());
 		list.add(post.getTipo_servicio());
 		list.add(post.getFechaHoraInicio());
