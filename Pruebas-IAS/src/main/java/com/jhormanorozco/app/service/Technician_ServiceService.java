@@ -12,6 +12,6 @@ public interface Technician_ServiceService {
 
 	public Attention_Hour save(Attention_Hour save);
 
-	public List<Object> hacerCalculos(PostRequestDTO post);
+	public List<ResponseDTO> hacerCalculos(PostRequestDTO post);
 
 }

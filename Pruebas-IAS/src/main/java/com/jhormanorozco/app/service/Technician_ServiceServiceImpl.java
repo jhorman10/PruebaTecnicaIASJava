@@ -28,14 +28,20 @@ public class Technician_ServiceServiceImpl implements Technician_ServiceService 
 	}
 
 	@Override
-	public List<Object> hacerCalculos(PostRequestDTO post) {
-		// auqui se calcula
-		List<Object> list = new ArrayList<>();
-		list.add(post.getId_tecnico());
-		list.add(post.getTipo_servicio());
-		list.add(post.getFechaHoraInicio());
-		list.add(post.getFechaHoraFin());
-		return list;
+	public List<ResponseDTO> hacerCalculos(PostRequestDTO post) {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	//@Override
+	//public List<Object> hacerCalculos(PostRequestDTO post) {
+		// aqui se calcula
+		//List<Object> list = new ArrayList<>();
+		//list.add(post.getId_tecnico());
+		//list.add(post.getTipo_servicio());
+		//list.add(post.getFechaHoraInicio());
+		//list.add(post.getFechaHoraFin());
+		//return  list;
+	//}
 
 }

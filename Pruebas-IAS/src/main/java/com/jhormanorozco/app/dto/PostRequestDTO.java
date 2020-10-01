@@ -1,48 +1,62 @@
 package com.jhormanorozco.app.dto;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
 
 import org.hibernate.annotations.Immutable;
 
 
 @Immutable
-public class PostRequestDTO {
+public class PostRequestDTO implements Serializable {
 
-	private Long id_tecnico;
-	private Long tipo_servicio;
-	private Date fechaHoraInicio;
-	private Date fechaHoraFin;
+	private static final long serialVersionUID = 188989803936416806L;
+	
+	@Id
+	@Column(name = "id_tecnico")
+	private int id_tecnico;
+	
+	@Column(name = "tipo_servicio")
+	private int tipo_servicio;
+	
+	@Column(name = "id_tecnico")
+	private String fechaHoraInicio;
+	
+	@Column(name = "fechaHoraFin")
+	private String fechaHoraFin;
 
-	public Long getId_tecnico() {
+	public int getId_tecnico() {
 		return id_tecnico;
 	}
 
-	public void setId_tecnico(Long id_tecnico) {
+	public void setId_tecnico(int id_tecnico) {
 		this.id_tecnico = id_tecnico;
 	}
 
-	public Long getTipo_servicio() {
+	public int getTipo_servicio() {
 		return tipo_servicio;
 	}
 
-	public void setTipo_servicio(Long tipo_servicio) {
+	public void setTipo_servicio(int tipo_servicio) {
 		this.tipo_servicio = tipo_servicio;
 	}
 
-	public Date getFechaHoraInicio() {
+	public String getFechaHoraInicio() {
 		return fechaHoraInicio;
 	}
 
-	public void setFechaHoraInicio(Date fechaHoraInicio) {
+	public void setFechaHoraInicio(String fechaHoraInicio) {
 		this.fechaHoraInicio = fechaHoraInicio;
 	}
 
-	public Date getFechaHoraFin() {
+	public String getFechaHoraFin() {
 		return fechaHoraFin;
 	}
 
-	public void setFechaHoraFin(Date fechaHoraFin) {
+	public void setFechaHoraFin(String fechaHoraFin) {
 		this.fechaHoraFin = fechaHoraFin;
 	}
-
+	
 }

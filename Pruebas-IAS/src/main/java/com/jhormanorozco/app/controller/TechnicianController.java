@@ -8,14 +8,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jhormanorozco.app.dto.PostRequestDTO;
+import com.jhormanorozco.app.dto.PostDataDTO;
 import com.jhormanorozco.app.dto.ResponseDTO;
-import com.jhormanorozco.app.entity.Attention_Hour;
+import com.jhormanorozco.app.service.TechnicianCustomService;
 import com.jhormanorozco.app.service.Technician_ServiceService;
 
 @RestController
@@ -24,6 +23,7 @@ public class TechnicianController {
 
 	@Autowired
 	private Technician_ServiceService technicianService;
+	private TechnicianCustomService technicianCustomService;
 
 	@GetMapping("/hours-for-week")
 	public ResponseEntity<List<ResponseDTO>> getInformation(@RequestParam Long dni, @RequestParam Long n)
@@ -36,15 +36,13 @@ public class TechnicianController {
 		}
 	}
 
-	@PostMapping("/asha")
-	public ResponseEntity<Attention_Hour> saveServicioAtentidoXTecnico(@RequestBody PostRequestDTO post) {
-		System.out.println("contenido de post: " + post);
-		List result = technicianService.hacerCalculos(post);
-		Attention_Hour save = new Attention_Hour();
-		save.setHORA_INICIO((Long) result.get(3));
-		save.setHORA_FIN((Long) result.get(5));
-		
-		return ResponseEntity.status(HttpStatus.OK).body(technicianService.save(save));
+	@PostMapping("/save-service")
+	public ResponseEntity<List<PostDataDTO>> saveServicioAtentidoXTecnico(@RequestParam int dni,
+			@RequestParam int serviceType, @RequestParam String startDate, @RequestParam String endDate) {
+		System.out.println("DNI: " + dni + " " + "serviceType: " + serviceType + " " + "startDate: " + startDate + " "
+				+ "endDate: " + endDate);
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(technicianCustomService.calculateHours(startDate, endDate, dni, serviceType));
 	}
 
 }

@@ -14,5 +14,11 @@ public interface TechnicianRepository{
 	
 	Attention_Hour save(Attention_Hour post);
 
+	Attention_Hour save(int HORA_INICIO, int HORA_FIN, int HORA_NOCTURNA, int HORA_SABATINA, int HORA_DOMINICAL,
+			int HORA_EXTRA, int HORA_EXTRA_NOCTURNA, int HORA_EXTRA_SABATINA, int HORA_EXTRA_DOMINICAL, int TOTAL_HORAS,
+			int ID_TECNICO) throws Exception;
+
+	List<ResponseDTO> horasPorSemana(int dni, int n) throws Exception;
+
 }
 

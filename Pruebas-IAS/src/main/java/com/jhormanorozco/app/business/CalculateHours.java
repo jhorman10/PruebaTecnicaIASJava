@@ -2,16 +2,14 @@ package com.jhormanorozco.app.business;
 
 import java.sql.Date;
 import java.util.Calendar;
-import java.util.List;
 
-import com.jhormanorozco.app.dto.ResponseDTO;
 import com.jhormanorozco.app.repository.TechnicianRepositoryCustom;
 
 public class CalculateHours {
 
-	Calendar cal = Calendar.getInstance();
+	static Calendar cal = Calendar.getInstance();
 
-	public int calculateExtraHours(Date endDate) {
+	public static int calculateExtraHours(Date endDate) {
 		int hour = 20;
 		cal.setTime(endDate);
 		int end_date = cal.get(Calendar.HOUR_OF_DAY);
@@ -23,7 +21,7 @@ public class CalculateHours {
 		}
 	}
 
-	public int calculateNightHours(Date endDate) {
+	public static int calculateNightHours(Date endDate) {
 		cal.setTime(endDate);
 		int end_date = cal.get(Calendar.HOUR_OF_DAY);
 		int nightHourStart = 20;
@@ -39,24 +37,24 @@ public class CalculateHours {
 
 	}
 
-	public int calculateDayOfWeek(Date startDate) {
+	public static int calculateDayOfWeek(Date startDate) {
 		cal.setTime(startDate);
 		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 		return dayOfWeek;
 	}
 
-	public int calculateWeekOfYear(Date startDate) {
+	public static int calculateWeekOfYear(Date startDate) {
 		cal.setTime(startDate);
 		int weekOfYear = cal.get(Calendar.WEEK_OF_YEAR);
 		return weekOfYear;
 	}
 
-	public List<ResponseDTO> calculateHoursForWeek(Long dni, Long n) throws Exception {
+	public static int calculateHoursForWeek(int dni, int n) throws Exception {
 		TechnicianRepositoryCustom TRC = new TechnicianRepositoryCustom();
-		return TRC.horasPorSemana(dni,n);
+		return (int) TRC.horasPorSemana(dni,n).get(0).getTOTAL_HORAS();
 	}
 
-	public int calculateHoursForDay(Date startDate, Date endDate) {
+	public static int calculateHoursForDay(Date startDate, Date endDate) {
 		cal.setTime(startDate);
 		int start_Date = cal.get(Calendar.HOUR_OF_DAY);
 		
@@ -65,7 +63,7 @@ public class CalculateHours {
 		return end_Date - start_Date;
 	}
 	
-	public int calculateSaturday(Date startDate, Date endDate) {
+	public static int calculateSaturday(Date startDate, Date endDate) {
 		int day = calculateDayOfWeek(endDate);
 		if (day == 6) {
 			return calculateHoursForDay(startDate, endDate);
@@ -74,7 +72,7 @@ public class CalculateHours {
 		}
 	}
 
-	public int calculateSunday(Date startDate, Date endDate) {
+	public static int calculateSunday(Date startDate, Date endDate) {
 		int day = calculateDayOfWeek(endDate);
 		if (day == 7) {
 			return calculateHoursForDay(startDate, endDate);
@@ -83,7 +81,7 @@ public class CalculateHours {
 		}
 	}
 
-	public int calculateSaturdayExtra(int hoursForWeek, Date endDate) {
+	public static int calculateSaturdayExtra(int hoursForWeek, Date endDate) {
 		int day = calculateDayOfWeek(endDate);
 		if (hoursForWeek > 48) {
 			if (day == 6) {
@@ -93,7 +91,7 @@ public class CalculateHours {
 		return 0;
 	}
 
-	public int calculateSundayExtra(int hoursForWeek, Date endDate) {
+	public static int calculateSundayExtra(int hoursForWeek, Date endDate) {
 		int day = calculateDayOfWeek(endDate);
 		if (hoursForWeek > 48) {
 			if (day == 7) {
@@ -103,7 +101,7 @@ public class CalculateHours {
 		return 0;
 	}
 	
-	public int calculateSaturdayExtraNight(int hoursForWeek, Date endDate) {
+	public static int calculateSaturdayExtraNight(int hoursForWeek, Date endDate) {
 		cal.setTime(endDate);
 		int end_Date = cal.get(Calendar.HOUR_OF_DAY);
 		int day = calculateDayOfWeek(endDate);
@@ -115,7 +113,7 @@ public class CalculateHours {
 		return 0;
 	}
 	
-	public int calculateSundayExtraNight(int hoursForWeek, Date endDate) {
+	public static int calculateSundayExtraNight(int hoursForWeek, Date endDate) {
 		cal.setTime(endDate);
 		int end_Date = cal.get(Calendar.HOUR_OF_DAY);
 		int day = calculateDayOfWeek(endDate);

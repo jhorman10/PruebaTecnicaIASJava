@@ -3,6 +3,7 @@ package com.jhormanorozco.app.service;
 public interface TechnicianService {
 	
 	//aqui iria como lo que haria el negocio, por ejemplo listar tecnicos
+	
 	//calcular horas de tecnico 
 
 	/*public Iterable<Technician> findAll();
