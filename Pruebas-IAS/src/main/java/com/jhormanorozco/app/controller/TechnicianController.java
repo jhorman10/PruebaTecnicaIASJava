@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jhormanorozco.app.dto.PostDataDTO;
+import com.jhormanorozco.app.dto.PostRequestDTO;
 import com.jhormanorozco.app.dto.ResponseDTO;
 import com.jhormanorozco.app.service.TechnicianCustomService;
 import com.jhormanorozco.app.service.Technician_ServiceService;
@@ -37,7 +37,7 @@ public class TechnicianController {
 	}
 
 	@PostMapping("/save-service")
-	public ResponseEntity<List<PostDataDTO>> saveServicioAtentidoXTecnico(@RequestParam int dni,
+	public ResponseEntity<List<PostRequestDTO>> saveServicioAtentidoXTecnico(@RequestParam int dni,
 			@RequestParam int serviceType, @RequestParam String startDate, @RequestParam String endDate) {
 		System.out.println("DNI: " + dni + " " + "serviceType: " + serviceType + " " + "startDate: " + startDate + " "
 				+ "endDate: " + endDate);

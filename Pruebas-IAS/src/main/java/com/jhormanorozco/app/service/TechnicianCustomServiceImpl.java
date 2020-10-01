@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.jhormanorozco.app.business.CalculateHours;
 import com.jhormanorozco.app.dto.PostDataDTO;
+import com.jhormanorozco.app.dto.PostRequestDTO;
 
 @Service
 public class TechnicianCustomServiceImpl {
@@ -27,6 +28,6 @@ public class TechnicianCustomServiceImpl {
 		resp.get(0).setHORA_EXTRA_NOCTURNA(CalculateHours.calculateSaturdayExtraNight(CalculateHours.calculateHoursForWeek(dni, n), endDate));
 		resp.get(0).setHORA_EXTRA_SABATINA(CalculateHours.calculateSaturdayExtra(CalculateHours.calculateHoursForWeek(dni, n), endDate));
 		resp.get(0).setHORA_EXTRA_DOMINICAL(CalculateHours.calculateSundayExtra(CalculateHours.calculateHoursForWeek(dni, n), endDate));
-		return (List<PostDataDTO>) resp;
+		return resp;
 	}
 }
