@@ -15,7 +15,7 @@ public class Technician_RepositoryIMPL implements ITechnician_Repository {
 
 	private final String QUERY_TOTAL_HORAS = "SELECT SUM(HA.TOTAL_HORAS) AS TOTAL_HORAS FROM HORA_ATENCION HA LEFT JOIN DIA D ON HA.ID_HORA_ATENCION = D.ID_DIA INNER JOIN SEMANA S ON D.ID_DIA = S.ID_SEMANA INNER JOIN TECNICO_SERVICIO TS ON S.ID_SEMANA = TS.ID_SEMANA WHERE ID_TECNICO = :dni AND NUMERO_SEMANA = :n";
 
-	private final String QUERY_POST = "BEGIN; INSERT INTO SERVICIO (ID_TIPO_SERVICIO) VALUES (:ID_TIPO_SERVICIO); INSERT INTO SEMANA (NUMERO_SEMANA) VALUES  (:NUMERO_SEMANA); INSERT INTO DIA (DIA_SEMANA) VALUES (:DIA_SEMANA); INSERT INTO HORA_ATENCION   (HORA_INICIO, HORA_FIN,HORA_NOCTURNA,HORA_SABATINA,HORA_DOMINICAL,HORA_EXTRA,HORA_EXTRA_NOCTURNA,HORA_EXTRA_SABATINA,HORA_EXTRA_DOMINICAL,TOTAL_HORAS)  VALUES (:HORA_INICIO,:HORA_FIN,HORA_NOCTURNA,:HORA_SABATINA,:HORA_DOMINICAL,:HORA_EXTRA,:HORA_EXTRA_NOCTURNA,:HORA_EXTRA_SABATINA,:HORA_EXTRA_DOMINICAL,:TOTAL_HORAS); INSERT INTO TECNICO_SERVICIO (ID_TECNICO, ID_SERVICIO, ID_SEMANA) VALUES (:ID_TECNICO, (SELECT MAX(ID_SERVICIO)  FROM SERVICIO), (SELECT MAX(ID_SEMANA)  FROM SEMANA) ); COMMIT;";
+	private final String QUERY_POST = "BEGIN; INSERT INTO SERVICIO (ID_TIPO_SERVICIO) VALUES (:ID_TIPO_SERVICIO); INSERT INTO SEMANA (NUMERO_SEMANA) VALUES  (:NUMERO_SEMANA); INSERT INTO DIA (DIA_SEMANA) VALUES ( :DIA_SEMANA); INSERT INTO HORA_ATENCION (HORA_INICIO, HORA_FIN, HORA_NOCTURNA, HORA_SABATINA, HORA_DOMINICAL, HORA_EXTRA, HORA_EXTRA_NOCTURNA, HORA_EXTRA_SABATINA, HORA_EXTRA_DOMINICAL, TOTAL_HORAS)  VALUES ( :HORA_INICIO, :HORA_FIN, :HORA_NOCTURNA, :HORA_SABATINA, :HORA_DOMINICAL, :HORA_EXTRA, :HORA_EXTRA_NOCTURNA, :HORA_EXTRA_SABATINA, :HORA_EXTRA_DOMINICAL, :TOTAL_HORAS); INSERT INTO TECNICO_SERVICIO (ID_TECNICO, ID_SERVICIO, ID_SEMANA) VALUES ( :ID_TECNICO, (SELECT MAX(ID_SERVICIO)  FROM SERVICIO), (SELECT MAX(ID_SEMANA)  FROM SEMANA) ); COMMIT;";
 
 	@Autowired
 	private EntityManager em;
@@ -48,6 +48,7 @@ public class Technician_RepositoryIMPL implements ITechnician_Repository {
 			Query query = em.createNativeQuery(QUERY_POST, PostDataDTO.class);
 			query.setParameter("HORA_INICIO", post.getHORA_INICIO());
 			query.setParameter("HORA_FIN", post.getHORA_FIN());
+			query.setParameter("DIA_SEMANA", post.getDIA_SEMANA());
 			query.setParameter("HORA_NOCTURNA", post.getHORA_NOCTURNA());
 			query.setParameter("HORA_SABATINA", post.getHORA_SABATINA());
 			query.setParameter("HORA_DOMINICAL", post.getHORA_DOMINICAL());
@@ -57,8 +58,10 @@ public class Technician_RepositoryIMPL implements ITechnician_Repository {
 			query.setParameter("HORA_EXTRA_DOMINICAL", post.getHORA_EXTRA_DOMINICAL());
 			query.setParameter("TOTAL_HORAS", post.getTOTAL_HORAS());
 			query.setParameter("ID_TECNICO", post.getID_TECNICO());
+			query.setParameter("NUMERO_SEMANA", post.getNUMERO_SEMANA());
+			query.setParameter("ID_TIPO_SERVICIO", post.getID_TIPO_SERVICIO());
 
-			return (List<ResponseDTO>) query.getResultList();
+			return  query.getResultList();
 		} catch (Exception e) {
 			throw new Exception("Error al ejecutar la inserción: "+ e);
 		}
@@ -84,6 +87,7 @@ public class Technician_RepositoryIMPL implements ITechnician_Repository {
 			Query query = em.createQuery(QUERY_TOTAL_HORAS, ResponseDTO.class);
 			query.setParameter("dni", dni);
 			query.setParameter("n", n);
+
 
 			return query.getFirstResult();
 		}catch (Exception e){

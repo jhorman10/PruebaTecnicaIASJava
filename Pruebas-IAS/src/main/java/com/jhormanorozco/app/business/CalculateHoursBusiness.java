@@ -1,16 +1,17 @@
 package com.jhormanorozco.app.business;
 
-import java.util.Collections;
 import java.util.Date;
 import java.util.Calendar;
-import java.util.List;
-
-import com.jhormanorozco.app.dto.ResponseDTO;
 import com.jhormanorozco.app.repository.Technician_RepositoryIMPL;
 
 public class CalculateHoursBusiness {
 
 	static Calendar cal = Calendar.getInstance();
+
+	public static int calculateHour(Date date) {
+		cal.setTime(date);
+		return cal.get(Calendar.HOUR_OF_DAY);
+	}
 
 	public static int calculateExtraHours(Date endDate) {
 		int hour = 20;
@@ -41,21 +42,17 @@ public class CalculateHoursBusiness {
 
 	public static int calculateDayOfWeek(Date startDate) {
 		cal.setTime(startDate);
-		int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-		return dayOfWeek;
+		return cal.get(Calendar.DAY_OF_WEEK);
 	}
 
 	public static int calculateWeekOfYear(Date startDate) {
 		cal.setTime(startDate);
-		int weekOfYear = cal.get(Calendar.WEEK_OF_YEAR);
-		return weekOfYear;
+		return cal.get(Calendar.WEEK_OF_YEAR);
 	}
 
 	public static int calculateHoursForWeek(long dni, long n) throws Exception {
 		Technician_RepositoryIMPL TRC = new Technician_RepositoryIMPL();
-		int total_horas = TRC.totalHoras(dni, n);
-
-		return total_horas;
+		return TRC.totalHoras(dni, n);
 	}
 
 	public static int calculateHoursForDay(Date startDate, Date endDate) {
