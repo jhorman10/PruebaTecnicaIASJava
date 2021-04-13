@@ -16,6 +16,4 @@ public interface ITechnician_ServiceService {
 
 	public Attention_Hour save(PostDataDTO post) throws Exception;
 
-	public List<ResponseDTO> hacerCalculos(PostRequestDTO post);
-
 }

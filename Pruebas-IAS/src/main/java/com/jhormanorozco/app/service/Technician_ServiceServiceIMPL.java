@@ -2,7 +2,6 @@ package com.jhormanorozco.app.service;
 
 import java.util.Date;
 import java.util.List;
-
 import com.jhormanorozco.app.controller.HoursCalculatorController;
 import com.jhormanorozco.app.dto.PostDataDTO;
 import com.jhormanorozco.app.dto.PostRequestDTO;
@@ -30,12 +29,24 @@ public class Technician_ServiceServiceIMPL implements ITechnician_ServiceService
 
 	@Override
 	public Attention_Hour save(PostDataDTO post) throws Exception {
-		return technicianRepository.save(post);
-	}
 
-	@Override
-	public List<ResponseDTO> hacerCalculos(PostRequestDTO post) {
-		return null;
+//		int horaInicio = post.getHORA_INICIO();
+//		int horaFin = post.getHORA_FIN();
+//		int totalHoras = post.getTOTAL_HORAS();
+//		int horasExtra = post.getHORA_EXTRA();
+//		int horasExtraDominical = post.getHORA_EXTRA_DOMINICAL();
+//		int horasExtraNocturna = post.getHORA_EXTRA_NOCTURNA();
+//		int horasExtraSabatina = post.getHORA_EXTRA_SABATINA();
+//		int horaDominical = post.getHORA_DOMINICAL();
+//		int horaSabatina = post.getHORA_SABATINA();
+//		int horaNocturna = post.getHORA_NOCTURNA();
+//		int idTecnico = post.getID_TECNICO();
+//
+//		return technicianRepository.save(
+//				horaInicio,horaFin,horaNocturna,horaSabatina,
+//				horaDominical,horasExtra,horasExtraNocturna,
+//				horasExtraSabatina,horasExtraDominical,totalHoras,idTecnico
+//		);
+		return (Attention_Hour) technicianRepository.save(post);
 	}
-
 }

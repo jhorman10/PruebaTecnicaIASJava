@@ -1,7 +1,11 @@
 package com.jhormanorozco.app.business;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.Calendar;
+import java.util.List;
+
+import com.jhormanorozco.app.dto.ResponseDTO;
 import com.jhormanorozco.app.repository.Technician_RepositoryIMPL;
 
 public class CalculateHoursBusiness {
@@ -33,7 +37,6 @@ public class CalculateHoursBusiness {
 		} else {
 			return 0;
 		}
-
 	}
 
 	public static int calculateDayOfWeek(Date startDate) {
@@ -48,10 +51,10 @@ public class CalculateHoursBusiness {
 		return weekOfYear;
 	}
 
-	public static int calculateHoursForWeek(long dni, int n) throws Exception {
+	public static int calculateHoursForWeek(long dni, long n) throws Exception {
 		Technician_RepositoryIMPL TRC = new Technician_RepositoryIMPL();
 		int total_horas = TRC.totalHoras(dni, n);
-		System.out.println("Total Horas: " + total_horas);
+
 		return total_horas;
 	}
 
@@ -125,5 +128,4 @@ public class CalculateHoursBusiness {
 		}
 		return 0;
 	}
-
 }

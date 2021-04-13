@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.jhormanorozco.app.dto.ResponseDTO;
 import com.jhormanorozco.app.service.ITechnician_ServiceService;
 
@@ -43,18 +42,23 @@ public class TechnicianController {
 
 	@PostMapping("/save-service")
 	public ResponseEntity<Attention_Hour> saveService(
-			@RequestParam int dni, @RequestParam int serviceType, @RequestParam String startDate, @RequestParam String endDate
+			@RequestParam int dni, @RequestParam int serviceType,
+			@RequestParam String startDate, @RequestParam String endDate
 			) throws Exception {
+		try{
+			Date nStart = new DateTransformController().convertDate(startDate);
+			Date nEnd = new DateTransformController().convertDate(endDate);
 
-		Date nStart = new DateTransformController().convertDate(startDate);
-		Date nEnd = new DateTransformController().convertDate(endDate);
+			PostDataDTO response = (PostDataDTO) HoursCalculatorController.calculateHours(dni, serviceType, nStart, nEnd);
 
-		PostDataDTO response = (PostDataDTO) HoursCalculatorController.calculateHours(dni, serviceType, nStart, nEnd);
-		Attention_Hour total = technicianService.save(response);
-		//Attention_Hour response = technicianService.save(dni, serviceType, nStart, nEnd);
+			Attention_Hour total = technicianService.save(response);
 
-		return ResponseEntity.status(HttpStatus.OK).body(total);
-		//return null;
+
+			return ResponseEntity.status(HttpStatus.OK).body(total);
+		}catch (Exception e){
+			throw new Exception("Error en método post: " + e);
+			//return ResponseEntity.status(HttpStatus.MULTI_STATUS).body(""+ e);
+		}
 	}
 
 }
