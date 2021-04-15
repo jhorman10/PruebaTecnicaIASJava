@@ -57,7 +57,7 @@ public class Attention_Hour implements Serializable {
 		ID_HORA_ATENCION = iD_HORA_ATENCION;
 	}
 
-	public Long getHORA_INICIO() {
+	public long getHORA_INICIO() {
 		return HORA_INICIO;
 	}
 

@@ -1,163 +1,173 @@
 package com.jhormanorozco.app.dto;
 
+import org.hibernate.annotations.Immutable;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.io.Serializable;
 
-public class PostDataDTO {
-	
-	@Id
-	@Column(name="ID_TECNICO")
-	private int ID_TECNICO;
-	
-	@Column(name="ID_TIPO_SERVICIO")
-	private int ID_TIPO_SERVICIO;
-	
-	@Column(name="NUMERO_SEMANA")
-	private int NUMERO_SEMANA;
-	
-	@Column(name="DIA_SEMANA")
-	private int DIA_SEMANA;
-	
-	@Column(name="HORA_INICIO")
-	private int HORA_INICIO;
-	
-	@Column(name="HORA_FIN")
-	private int HORA_FIN;
-	
-	@Column(name="HORA_NOCTURNA")
-	private int HORA_NOCTURNA;
-	
-	@Column(name="HORA_SABATINA")
-	private int HORA_SABATINA;
-	
-	@Column(name="HORA_DOMINICAL")
-	private int HORA_DOMINICAL;
-	
-	@Column(name="HORA_EXTRA")
-	private int HORA_EXTRA;
-	
-	@Column(name="HORA_EXTRA_NOCTURNA")
-	private int HORA_EXTRA_NOCTURNA;
-	
-	@Column(name="HORA_EXTRA_SABATINA")
-	private int HORA_EXTRA_SABATINA;
-	
-	@Column(name="HORA_EXTRA_DOMINICAL")
-	private int HORA_EXTRA_DOMINICAL;
-	
-	@Column(name="TOTAL_HORAS")
-	private int TOTAL_HORAS;
+@Entity
+@Immutable
+public class PostDataDTO implements Serializable {
 
-	public int getID_TECNICO() {
-		return ID_TECNICO;
-	}
+    private static final long serialVersionUID = 188989803936416806L;
 
-	public void setID_TECNICO(int iD_TECNICO) {
-		ID_TECNICO = iD_TECNICO;
-	}
+    @Id
+    @Column(name = "ID_TECNICO")
+    private int ID_TECNICO;
 
-	public int getID_TIPO_SERVICIO() {
-		return ID_TIPO_SERVICIO;
-	}
+    @Column(name = "ID_TIPO_SERVICIO")
+    private int ID_TIPO_SERVICIO;
 
-	public void setID_TIPO_SERVICIO(int iD_TIPO_SERVICIO) {
-		ID_TIPO_SERVICIO = iD_TIPO_SERVICIO;
-	}
+    @Column(name = "NUMERO_SEMANA")
+    private int NUMERO_SEMANA;
 
-	public int getNUMERO_SEMANA() {
-		return NUMERO_SEMANA;
-	}
+    @Column(name = "DIA_SEMANA")
+    private int DIA_SEMANA;
 
-	public void setNUMERO_SEMANA(int nUMERO_SEMANA) {
-		NUMERO_SEMANA = nUMERO_SEMANA;
-	}
+    @Column(name = "HORA_INICIO")
+    private int HORA_INICIO;
 
-	public int getDIA_SEMANA() {
-		return DIA_SEMANA;
-	}
+    @Column(name = "HORA_FIN")
+    private int HORA_FIN;
 
-	public void setDIA_SEMANA(int dIA_SEMANA) {
-		DIA_SEMANA = dIA_SEMANA;
-	}
+    @Column(name = "HORA_NOCTURNA")
+    private int HORA_NOCTURNA;
 
-	public int getHORA_INICIO() {
-		return HORA_INICIO;
-	}
+    @Column(name = "HORA_SABATINA")
+    private int HORA_SABATINA;
 
-	public void setHORA_INICIO(int hORA_INICIO) {
-		HORA_INICIO = hORA_INICIO;
-	}
+    @Column(name = "HORA_DOMINICAL")
+    private int HORA_DOMINICAL;
 
-	public int getHORA_FIN() {
-		return HORA_FIN;
-	}
+    @Column(name = "HORA_EXTRA")
+    private int HORA_EXTRA;
 
-	public void setHORA_FIN(int hORA_FIN) {
-		HORA_FIN = hORA_FIN;
-	}
+    @Column(name = "HORA_EXTRA_NOCTURNA")
+    private int HORA_EXTRA_NOCTURNA;
 
-	public int getHORA_NOCTURNA() {
-		return HORA_NOCTURNA;
-	}
+    @Column(name = "HORA_EXTRA_SABATINA")
+    private int HORA_EXTRA_SABATINA;
 
-	public void setHORA_NOCTURNA(int hORA_NOCTURNA) {
-		HORA_NOCTURNA = hORA_NOCTURNA;
-	}
+    @Column(name = "HORA_EXTRA_DOMINICAL")
+    private int HORA_EXTRA_DOMINICAL;
 
-	public int getHORA_SABATINA() {
-		return HORA_SABATINA;
-	}
+    @Column(name = "TOTAL_HORAS")
+    private int TOTAL_HORAS;
 
-	public void setHORA_SABATINA(int hORA_SABATINA) {
-		HORA_SABATINA = hORA_SABATINA;
-	}
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-	public int getHORA_DOMINICAL() {
-		return HORA_DOMINICAL;
-	}
+    public int getID_TECNICO() {
+        return ID_TECNICO;
+    }
 
-	public void setHORA_DOMINICAL(int hORA_DOMINICAL) {
-		HORA_DOMINICAL = hORA_DOMINICAL;
-	}
+    public void setID_TECNICO(int ID_TECNICO) {
+        this.ID_TECNICO = ID_TECNICO;
+    }
 
-	public int getHORA_EXTRA() {
-		return HORA_EXTRA;
-	}
+    public int getID_TIPO_SERVICIO() {
+        return ID_TIPO_SERVICIO;
+    }
 
-	public void setHORA_EXTRA(int hORA_EXTRA) {
-		HORA_EXTRA = hORA_EXTRA;
-	}
+    public void setID_TIPO_SERVICIO(int ID_TIPO_SERVICIO) {
+        this.ID_TIPO_SERVICIO = ID_TIPO_SERVICIO;
+    }
 
-	public int getHORA_EXTRA_NOCTURNA() {
-		return HORA_EXTRA_NOCTURNA;
-	}
+    public int getNUMERO_SEMANA() {
+        return NUMERO_SEMANA;
+    }
 
-	public void setHORA_EXTRA_NOCTURNA(int hORA_EXTRA_NOCTURNA) {
-		HORA_EXTRA_NOCTURNA = hORA_EXTRA_NOCTURNA;
-	}
+    public void setNUMERO_SEMANA(int NUMERO_SEMANA) {
+        this.NUMERO_SEMANA = NUMERO_SEMANA;
+    }
 
-	public int getHORA_EXTRA_SABATINA() {
-		return HORA_EXTRA_SABATINA;
-	}
+    public int getDIA_SEMANA() {
+        return DIA_SEMANA;
+    }
 
-	public void setHORA_EXTRA_SABATINA(int hORA_EXTRA_SABATINA) {
-		HORA_EXTRA_SABATINA = hORA_EXTRA_SABATINA;
-	}
+    public void setDIA_SEMANA(int DIA_SEMANA) {
+        this.DIA_SEMANA = DIA_SEMANA;
+    }
 
-	public int getHORA_EXTRA_DOMINICAL() {
-		return HORA_EXTRA_DOMINICAL;
-	}
+    public int getHORA_INICIO() {
+        return HORA_INICIO;
+    }
 
-	public void setHORA_EXTRA_DOMINICAL(int hORA_EXTRA_DOMINICAL) {
-		HORA_EXTRA_DOMINICAL = hORA_EXTRA_DOMINICAL;
-	}
+    public void setHORA_INICIO(int HORA_INICIO) {
+        this.HORA_INICIO = HORA_INICIO;
+    }
 
-	public int getTOTAL_HORAS() {
-		return TOTAL_HORAS;
-	}
+    public int getHORA_FIN() {
+        return HORA_FIN;
+    }
 
-	public void setTOTAL_HORAS(int tOTAL_HORAS) {
-		TOTAL_HORAS = tOTAL_HORAS;
-	}
-	
+    public void setHORA_FIN(int HORA_FIN) {
+        this.HORA_FIN = HORA_FIN;
+    }
+
+    public int getHORA_NOCTURNA() {
+        return HORA_NOCTURNA;
+    }
+
+    public void setHORA_NOCTURNA(int HORA_NOCTURNA) {
+        this.HORA_NOCTURNA = HORA_NOCTURNA;
+    }
+
+    public int getHORA_SABATINA() {
+        return HORA_SABATINA;
+    }
+
+    public void setHORA_SABATINA(int HORA_SABATINA) {
+        this.HORA_SABATINA = HORA_SABATINA;
+    }
+
+    public int getHORA_DOMINICAL() {
+        return HORA_DOMINICAL;
+    }
+
+    public void setHORA_DOMINICAL(int HORA_DOMINICAL) {
+        this.HORA_DOMINICAL = HORA_DOMINICAL;
+    }
+
+    public int getHORA_EXTRA() {
+        return HORA_EXTRA;
+    }
+
+    public void setHORA_EXTRA(int HORA_EXTRA) {
+        this.HORA_EXTRA = HORA_EXTRA;
+    }
+
+    public int getHORA_EXTRA_NOCTURNA() {
+        return HORA_EXTRA_NOCTURNA;
+    }
+
+    public void setHORA_EXTRA_NOCTURNA(int HORA_EXTRA_NOCTURNA) {
+        this.HORA_EXTRA_NOCTURNA = HORA_EXTRA_NOCTURNA;
+    }
+
+    public int getHORA_EXTRA_SABATINA() {
+        return HORA_EXTRA_SABATINA;
+    }
+
+    public void setHORA_EXTRA_SABATINA(int HORA_EXTRA_SABATINA) {
+        this.HORA_EXTRA_SABATINA = HORA_EXTRA_SABATINA;
+    }
+
+    public int getHORA_EXTRA_DOMINICAL() {
+        return HORA_EXTRA_DOMINICAL;
+    }
+
+    public void setHORA_EXTRA_DOMINICAL(int HORA_EXTRA_DOMINICAL) {
+        this.HORA_EXTRA_DOMINICAL = HORA_EXTRA_DOMINICAL;
+    }
+
+    public int getTOTAL_HORAS() {
+        return TOTAL_HORAS;
+    }
+
+    public void setTOTAL_HORAS(int TOTAL_HORAS) {
+        this.TOTAL_HORAS = TOTAL_HORAS;
+    }
 }
