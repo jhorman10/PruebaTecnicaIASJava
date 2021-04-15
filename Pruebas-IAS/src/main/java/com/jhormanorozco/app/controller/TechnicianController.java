@@ -52,11 +52,11 @@ public class TechnicianController {
             PostDataDTO response = HoursCalculatorController.calculateHours(dni, serviceType, nStart, nEnd);
             var total = technicianService.save(response);
 
-            if (total == null || total.isEmpty() || total.get(0) == null) {
-                return ResponseEntity.status(HttpStatus.OK).body(new ArrayList<ResponseDTO>());
-            } else {
+//            if (total == null || total.isEmpty() || total.get(0) == null) {
+//                return ResponseEntity.status(HttpStatus.OK).body(new ArrayList<ResponseDTO>());
+//            } else {
                 return ResponseEntity.status(HttpStatus.OK).body(total);
-            }
+//            }
 
         } catch (Exception e) {
             throw new Exception("Error en método saveService controller: " + e);

@@ -2,6 +2,8 @@ package com.jhormanorozco.app.business;
 
 import java.util.Date;
 import java.util.Calendar;
+import java.util.List;
+
 import com.jhormanorozco.app.repository.Technician_RepositoryIMPL;
 
 public class CalculateHoursBusiness {
@@ -13,13 +15,12 @@ public class CalculateHoursBusiness {
         return cal.get(Calendar.HOUR_OF_DAY);
     }
 
-    public static int calculateExtraHours(Date endDate) {
-        int hour = 20;
+    public static int calculateExtraHours(int total, Date endDate) {
         cal.setTime(endDate);
         int end_date = cal.get(Calendar.HOUR_OF_DAY);
 
-        if (end_date > hour) {
-            return end_date - hour;
+        if (end_date > total) {
+            return total - end_date;
         } else {
             return 0;
         }
@@ -50,7 +51,7 @@ public class CalculateHoursBusiness {
         return cal.get(Calendar.WEEK_OF_YEAR);
     }
 
-    public static int calculateHoursForWeek(int dni, int n) throws Exception {
+    public static List calculateHoursForWeek(int dni, int n) throws Exception {
         Technician_RepositoryIMPL TRC = new Technician_RepositoryIMPL();
         return TRC.getTotalHoras(dni, n);
     }
@@ -86,7 +87,7 @@ public class CalculateHoursBusiness {
         int day = calculateDayOfWeek(endDate);
         if (hoursForWeek > 48) {
             if (day == 6) {
-                return calculateExtraHours(endDate);
+                return calculateExtraHours(hoursForWeek, endDate);
             }
         }
         return 0;
@@ -96,17 +97,17 @@ public class CalculateHoursBusiness {
         int day = calculateDayOfWeek(endDate);
         if (hoursForWeek > 48) {
             if (day == 7) {
-                return calculateExtraHours(endDate);
+                return calculateExtraHours(hoursForWeek, endDate);
             }
         }
         return 0;
     }
 
-    public static int calculateSaturdayExtraNight(Date endDate) {
+    public static int calculateSaturdayExtraNight(int totalHoras, Date endDate) {
         cal.setTime(endDate);
         int end_Date = cal.get(Calendar.HOUR_OF_DAY);
         int day = calculateDayOfWeek(endDate);
-        if (end_Date > 20) {
+        if (end_Date > totalHoras) {
             if (day == 6) {
                 return calculateNightHours(endDate);
             }
