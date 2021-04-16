@@ -2,10 +2,8 @@ package com.jhormanorozco.app.controller;
 
 import com.jhormanorozco.app.business.CalculateHoursBusiness;
 import com.jhormanorozco.app.dto.PostDataDTO;
-import com.jhormanorozco.app.dto.TotalHorasDTO;
 import org.springframework.stereotype.Controller;
 import java.util.Date;
-import java.util.List;
 
 @Controller
 public class HoursCalculatorController {

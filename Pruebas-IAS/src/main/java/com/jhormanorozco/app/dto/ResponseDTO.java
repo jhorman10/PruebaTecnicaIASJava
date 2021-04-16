@@ -4,14 +4,14 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
 import org.hibernate.annotations.Immutable;
 
 @Entity
 @Immutable
 public class ResponseDTO implements Serializable {
 
-    private static final long serialVersionUID = 3505786372729687021L;
-
+    private static final long serialVersionUID = 2101222238699017978L;
     @Id
     @Column(name = "ID_TECNICO")
     private int ID_TECNICO;
