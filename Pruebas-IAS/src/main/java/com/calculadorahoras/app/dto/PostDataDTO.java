@@ -1,4 +1,4 @@
-package com.jhormanorozco.app.dto;
+package com.calculadorahoras.app.dto;
 
 import org.hibernate.annotations.Immutable;
 import javax.persistence.Column;

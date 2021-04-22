@@ -1,10 +1,10 @@
-package com.jhormanorozco.app.business;
+package com.calculadorahoras.app.business;
 
 import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
 
-import com.jhormanorozco.app.repository.Technician_RepositoryIMPL;
+import com.calculadorahoras.app.repository.Technician_RepositoryIMPL;
 
 public class CalculateHoursBusiness {
 

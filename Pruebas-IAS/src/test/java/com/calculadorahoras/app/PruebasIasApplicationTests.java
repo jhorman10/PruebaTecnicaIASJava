@@ -1,4 +1,4 @@
-package com.jhormanorozco.app;
+package com.calculadorahoras.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

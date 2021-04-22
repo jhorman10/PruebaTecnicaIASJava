@@ -1,4 +1,4 @@
-package com.jhormanorozco.app.entity;
+package com.calculadorahoras.app.entity;
 
 import java.io.Serializable;
 
